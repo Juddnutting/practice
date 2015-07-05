@@ -125,4 +125,12 @@ class Generations
 		end
 	end
 
+	def run(num_of_generations = 1)
+
+		num_of_generations.times do 
+			next_generation
+		end
+	end
+
+
 end # class end
