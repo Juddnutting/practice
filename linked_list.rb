@@ -19,7 +19,7 @@ class LinkedList
 
 	def add(value)
 		if head.nil?
-			head = Node.new(value)
+			self.head = Node.new(value)
 		else
 			current = head
 			while !current.next_node.nil?
@@ -31,6 +31,7 @@ class LinkedList
 	end
 
 	def display
+		return nil if head.nil?
 		current = head
 		all_values = []
 		while !current.next_node.nil?
@@ -44,7 +45,7 @@ class LinkedList
 	def delete(value)
 		#if head node is deleted, reroute the head
 		if head.value == value
-			self.head = @head.next_node
+			self.head = head.next_node
 		else
 			current = head.next_node
 			previous = head
@@ -71,4 +72,6 @@ l.delete(1)
 l.delete(3)
 l.delete(2)
 l.add(5)
+l.display
+l.delete(5)
 l.display
