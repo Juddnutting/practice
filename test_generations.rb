@@ -6,6 +6,7 @@ class TestGenerations < Minitest::Test
 	def setup
 		@gen= Generations.new()
 		@gen.board = [[0,1,1,0,0],[0,1,1,1,0],[1,1,0,0,0],[1,0,0,1,0],[1,1,0,0,1]]
+		@correct_board = [[0,1,0,1,0],[0,0,0,1,0],[1,0,0,1,0],[0,0,1,0,0],[1,1,0,0,0]]
 	end
 
 	def test_size_is_correct
@@ -39,6 +40,10 @@ class TestGenerations < Minitest::Test
 		assert_equal 1, @gen.result(3,0)
 		assert_equal 0, @gen.result(2,0)
 		assert_equal 0, @gen.result(1,0)
+	end
+
+	def test_final_generation
+		assert_equal @correct_board, @gen.next_generation
 	end
 
 end

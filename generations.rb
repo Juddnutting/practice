@@ -19,7 +19,7 @@ class Generations
 	end
 
 	def test_board
-		@board = [[0,1,1,0,0],[0,1,1,1,0],[1,1,0,0,0],[1,0,0,1,0],[1,1,0,0,1]]
+		self.board = [[0,1,1,0,0],[0,1,1,1,0],[1,1,0,0,0],[1,0,0,1,0],[1,1,0,0,1]]
 	end
 
 	def print_board
@@ -40,7 +40,7 @@ class Generations
 	end
 
 	def randomize_board
-		@board = @board.map do |row|
+		self.board = board.map do |row|
 			row.map { |col| [0,1].sample}
 		end
 	end
@@ -55,9 +55,9 @@ class Generations
 
 	def next_generation
 		# scored board not required but was handy in testing
-		@new_board = Array.new(height) { Array.new(width,nil)}
-		@scored_board = Array.new(height) { Array.new(width,nil)}
-		@board.each_with_index do |row, row_x|
+		self.new_board = Array.new(height) { Array.new(width,nil)}
+		self.scored_board = Array.new(height) { Array.new(width,nil)}
+		self.board.each_with_index do |row, row_x|
 			row.each_with_index do |cell_value, col_y|
 				score = sum_of_adjacent_values(row_x,col_y)
 				scored_board[row_x][col_y] = score
@@ -65,7 +65,7 @@ class Generations
 				
 			end
 		end
-		@board = @new_board
+		self.board = @new_board
 
 	end
 
